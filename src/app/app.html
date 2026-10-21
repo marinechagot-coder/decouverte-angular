@@ -40,26 +40,23 @@
     Absent
   </button>
 </section>
-<section aria-labelledby="leave-title">
-  <h2 id="leave-title">Mes congés</h2>
-  <p>Jours posés : {{ daysTaken() }}</p>
-  <!-- aria-live : le lecteur d'ecran annonce le nouveau solde. -->
-  @if (isEmpty()) {
-    <p aria-live="polite" class="counter--empty">
-      Jours restants : {{ remainingDays() }} / {{ totalDays }} &#128557;
-    </p>
-  } @else {
-    <p aria-live="polite">Jours restants : {{ remainingDays() }} / {{ totalDays }}</p>
-  }
-  <p>Vous avez utilisé {{ pourConges() }} % de vos congés</p>
+<app-leave-counter />
+<section aria-labelledby="team-title">
+  <h2 id="team-title">L'équipe</h2>
 
-  <button type="button" [disabled]="isEmpty()" (click)="addDay()">Poser un jour</button>
-  <button type="button" [disabled]="daysTaken() > totalDays - 5" (click)="addWeek()">
-    Poser une semaine
-  </button>
-  <button type="button" [disabled]="daysTaken() === 0" (click)="removeDay()">
-    Annuler un jour
-  </button>
-  <button type="button" (click)="reset()">Remettre à zéro</button>
+  <ul class="team">
+    @for (employee of employees; track employee.id) {
+      <li>
+        @if (employee.id === 1) {
+          <app-employee-card [employee]="employee" [compact]="true" />
+        } @else {
+          <app-employee-card [employee]="employee" />
+        }
+      </li>
+    } @empty {
+      <li>Aucun collègue pour le moment.</li>
+    }
+  </ul>
+  <p>{{ nbcol }} collègues, dont {{ nbtel }} en télétravail</p>
 </section>
 <router-outlet />

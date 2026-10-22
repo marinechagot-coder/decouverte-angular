@@ -1,8 +1,5 @@
-<p>this works!</p>
-
-<!--- -->
-@if (lemployee === undefined) {
-  <p>Collégue introuvable</p>
+@if (lemployee(); as employee) {
+  <app-employee-card [employee]="employee" />
 } @else {
-  <app-employee-card [employee]="lemployee" />
+  <p>Collégue introuvable</p>
 }

@@ -1,4 +1,4 @@
-import { Component, input, inject } from '@angular/core';
+import { Component, computed, input, inject } from '@angular/core';
 import { EmployeeCard } from '../../feature/employee-card/employee-card';
 import { TeamStore } from '../../service/team-store';
 
@@ -11,5 +11,5 @@ import { TeamStore } from '../../service/team-store';
 export class EmployeeDetails {
   readonly store = inject(TeamStore);
   readonly id = input.required<number>();
-  readonly lemployee = this.store.get(Number(this.id));
+  readonly lemployee = computed(() => this.store.get(Number(this.id())));
 }

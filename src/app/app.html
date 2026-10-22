@@ -1,63 +1,23 @@
-<h1>{{ appName }}</h1>
-<p>Bonjour {{ userName }}</p>
+<header class="header">
+  <span class="app-name">{{ appName }}</span>
+  <nav aria-label="Navigation principale">
+    <!-- routerLink : change de page sans recharger.
+         routerLinkActive : ajoute la classe "active" au lien de la page affichee.
+         ariaCurrentWhenActive : annonce "page actuelle" au lecteur d'ecran. -->
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      ariaCurrentWhenActive="page"
+    >
+      Accueil
+    </a>
+    <a routerLink="/equipe" routerLinkActive="active" ariaCurrentWhenActive="page">Équipe</a>
+    <a routerLink="/ajouter" routerLinkActive="active" ariaCurrentWhenActive="page">Ajouter</a>
+  </nav>
+</header>
 
-<!-- Une expression peut contenir un calcul ou un appel de methode. -->
-<p>Nous sommes en {{ 2020 + 6 }}. Votre prénom compte {{ userName.length }} lettres.</p>
-<p>En majuscules : {{ userName.toUpperCase() }}</p>
-<!-- type="button" : ce bouton ne sert pas a envoyer un formulaire. -->
-<button type="button" (click)="sayHello()">Dire bonjour</button>
-<button type="button" (click)="eraseHello()">Effacer</button>
-<!-- aria-live : le lecteur d'ecran annonce le message quand il apparait. -->
-<p aria-live="polite">{{ message.toUpperCase() }}</p>
-<input type="text" #inputzonetext (input)="majinput(inputzonetext.value)" />
-<p>Vous tapez: {{ texte }}</p>
-<section aria-labelledby="status-title">
-  <h2 id="status-title">Mon statut aujourd'hui</h2>
-  <!-- On LIT un signal en l'appelant : status() -->
-  <p>
-    Vous êtes : <strong>{{ status() }}</strong>
-  </p>
-
-  <button
-    type="button"
-    [attr.aria-pressed]="status() === 'sur site'"
-    (click)="changeStatus('sur site')"
-  >
-    Sur site
-  </button>
-  <button
-    type="button"
-    [attr.aria-pressed]="status() === 'en télétravail'"
-    (click)="changeStatus('en télétravail')"
-  >
-    En télétravail
-  </button>
-  <button
-    type="button"
-    [attr.aria-pressed]="status() === 'absent'"
-    (click)="changeStatus('absent')"
-  >
-    Absent
-  </button>
-</section>
-<app-leave-counter />
-<section aria-labelledby="team-title">
-  <h2 id="team-title">L'équipe</h2>
-
-  <ul class="team">
-    @for (employee of employees; track employee.id) {
-      <li>
-        @if (employee.id === 1) {
-          <app-employee-card [employee]="employee" [compact]="true" />
-        } @else {
-          <app-employee-card [employee]="employee" />
-        }
-        <p>{{ $index + 1 }}/{{ $count }}</p>
-      </li>
-    } @empty {
-      <li>Aucun collègue pour le moment.</li>
-    }
-  </ul>
-  <p>{{ nbcol }} collègues, dont {{ nbtel }} en télétravail</p>
-</section>
-<router-outlet />
+<main class="container">
+  <!-- La page correspondant a l'adresse s'affiche ici. -->
+  <router-outlet />
+</main>

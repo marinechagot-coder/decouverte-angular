@@ -52,9 +52,9 @@ export class App {
     },
     {
       id: 4,
-      firstName: 'Sahara',
+      firstName: 'Sandra',
       lastName: 'Levèfre',
-      email: 'sahara.levefre@techcorp.fr',
+      email: 'sandra.levefre@techcorp.fr',
       job: 'Chargée RH',
       department: 'Ressources humaines',
       remote: true,

@@ -1,0 +1,12 @@
+p {
+  border-radius: 50%;
+  background-color: rgb(54, 88, 199);
+  width: 2rem;
+  height: 2rem;
+  font-weight: bold;
+  display: inline-grid;
+  place-items: center;
+  flex: auto;
+  flex-shrink: 0;
+  border-radius: 50%;
+}

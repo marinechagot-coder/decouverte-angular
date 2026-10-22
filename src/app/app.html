@@ -52,6 +52,7 @@
         } @else {
           <app-employee-card [employee]="employee" />
         }
+        <p>{{ $index + 1 }}/{{ $count }}</p>
       </li>
     } @empty {
       <li>Aucun collègue pour le moment.</li>

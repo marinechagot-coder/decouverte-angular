@@ -22,3 +22,7 @@
   color: #4b5563;
 }
 
+.zone-compact {
+  display: flex;
+  justify-content: space-between;
+}

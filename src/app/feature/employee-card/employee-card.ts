@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { StatusBadge } from '../status-badge/status-badge';
+import { EmployeeBadge } from '../employee-badge/employee-badge';
 
 @Component({
-  imports: [StatusBadge],
+  imports: [StatusBadge, EmployeeBadge],
   selector: 'app-employee-card',
   styleUrl: './employee-card.css',
   templateUrl: './employee-card.html',
@@ -13,4 +14,5 @@ export class EmployeeCard {
   // required : le parent est OBLIGÉ de la fournir.
   readonly employee = input.required<Employee>();
   compact = input(false);
+  //readonly initiales = ;
 }

@@ -1,15 +1,16 @@
 <h1>Bonjour {{ userName }}</h1>
 
-
 <p>Nous sommes en {{ 2020 + 6 }}. Votre prénom compte {{ userName.length }} lettres.</p>
 <p>En majuscules : {{ userName.toUpperCase() }}</p>
 <!-- type="button" : ce bouton ne sert pas a envoyer un formulaire. -->
-<button type="button" (click)="sayHello()">Dire bonjour</button>
-<button type="button" (click)="eraseHello()">Effacer</button>
+
+<button matButton="tonal" type="button" (click)="sayHello()">Dire bonjour</button>
+<button matButton="outlined" type="button" (click)="eraseHello()">Effacer</button>
 <!-- aria-live : le lecteur d'ecran annonce le message quand il apparait. -->
 <p aria-live="polite">{{ message.toUpperCase() }}</p>
 <input type="text" #inputzonetext (input)="majinput(inputzonetext.value)" />
 <p>Vous tapez: {{ texte }}</p>
+
 <section aria-labelledby="status-title">
   <h2 id="status-title">Mon statut aujourd'hui</h2>
   <!-- On LIT un signal en l'appelant : status() -->

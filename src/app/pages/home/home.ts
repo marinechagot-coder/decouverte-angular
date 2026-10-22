@@ -1,16 +1,16 @@
 import { Component, signal } from '@angular/core';
 import { LeaveCounter } from '../../feature/leave-counter/leave-counter';
+import { MatButton } from '@angular/material/button';
 
 type Status = 'sur site' | 'en télétravail' | 'absent';
 
 @Component({
-  imports: [LeaveCounter],
+  imports: [LeaveCounter, MatButton],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html',
 })
 export class Home {
-
   protected readonly userName = 'Claire';
   protected message = '';
   protected texte = '';

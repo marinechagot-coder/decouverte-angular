@@ -53,4 +53,8 @@ export class TeamStore {
   remove(id: number): void {
     this.employeesSignal.update((list) => list.filter((employee) => employee.id !== id));
   }
+
+  get(id: number): Employee | undefined {
+    return this.employees().find((employee) => employee.id === id);
+  }
 }

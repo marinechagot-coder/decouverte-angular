@@ -25,4 +25,6 @@
 .zone-compact {
   display: flex;
   justify-content: space-between;
+  color: inherit;
+  text-decoration: none;
 }

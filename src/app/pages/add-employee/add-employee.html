@@ -1,4 +1,11 @@
 <h1>Ajouter un collègue</h1>
+@if (submitAttempted()) {
+  <p class="form__error">Le formulaire contient des erreurs, veuillez les corriger.</p>
+  @for (err of employeeForm().errorSummary(); track $index) {
+    <p class="field__error">{{ err.kind }}: {{ err.message }}</p>
+  }
+  <!---@for (err of this.employeeForm.errorSummary(); track $index) { <p class="field__error">{{ err.field }}: {{ err.message }}</p> } -->
+}
 <p>Tous les champs sont obligatoires, sauf le télétravail.</p>
 
 <!-- @let : un raccourci vers l'etat de chaque champ. -->
@@ -79,7 +86,9 @@
   </div>
 
   <div class="form__actions">
-    <button matButton="filled" type="submit">Ajouter</button>
+    <button matButton="filled" type="submit" [disabled]="employeeForm().submitting()">
+      Ajouter
+    </button>
     <!-- type="button" : ce bouton n'envoie PAS le formulaire. -->
     <button matButton="outlined" type="button" (click)="resetForm()">Effacer</button>
   </div>

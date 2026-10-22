@@ -41,7 +41,7 @@ const EMPTY_DRAFT: EmployeeDraft = {
 export class AddEmployee {
   private readonly store = inject(TeamStore);
   private readonly router = inject(Router);
-
+  protected readonly submitAttempted = signal(false);
   protected readonly departments = ['Informatique', 'Ressources humaines', 'Commercial'];
 
   private readonly draft = signal<EmployeeDraft>({ ...EMPTY_DRAFT }); //copie EMPTY_DRAFT pour ne pas modifier l'original
@@ -63,6 +63,7 @@ export class AddEmployee {
     {
       submission: {
         action: async () => this.save(),
+        onInvalid: async () => this.submitAttempted.set(true),
       },
     },
   );

@@ -3,6 +3,7 @@ import { AddEmployee } from './pages/add-employee/add-employee';
 import { Home } from './pages/home/home';
 import { TeamPage } from './pages/team-page/team-page';
 import { EmployeeDetails } from './pages/employee-details/employee-details';
+import { Labo } from './pages/labo/labo';
 
 export const routes: Routes = [
   // title : le titre de l'onglet, différent pour chaque page.
@@ -14,6 +15,7 @@ export const routes: Routes = [
     title: "Détails de l'employé | TechCorp Équipe",
     component: EmployeeDetails,
   },
+  { path: 'labo', title: 'Laboratoire | TechCorp Équipe', component: Labo },
   // Toute autre adresse renvoie vers l'accueil. Toujours en dernier.
   { path: '**', redirectTo: '' },
 ];

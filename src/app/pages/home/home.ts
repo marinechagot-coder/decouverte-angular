@@ -1,6 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { LeaveCounter } from '../../feature/leave-counter/leave-counter';
 import { MatButton } from '@angular/material/button';
+import { httpResource } from '@angular/common/http';
+import { Department } from '../../models/department';
 
 type Status = 'sur site' | 'en télétravail' | 'absent';
 
@@ -15,6 +17,7 @@ export class Home {
   protected message = '';
   protected texte = '';
   protected readonly status = signal<Status>('sur site');
+   protected readonly departments = httpResource<Department[]>(() => '/api/departments');
   protected sayHello(): void {
     this.message = 'Bienvenue dans TechCorp Équipe, ' + this.userName + ' !';
   }
@@ -29,4 +32,10 @@ export class Home {
     // set() remplace la valeur : l'écran se met à jour tout seul.
     this.status.set(newStatus);
   }
+protected readonly departmentsByFloor = computed(() => {
+  if (!this.departments.hasValue()) {
+    return [];
+  }
+  return [...this.departments.value()].sort((a, b) => a.floor - b.floor);
+});
 }

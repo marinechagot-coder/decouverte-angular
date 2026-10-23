@@ -22,19 +22,19 @@ export class LeaveCounter {
   //);
   protected addDay(): void {
     this.daysTaken.update((days) => {
-      let val = days > this.totalDays - 1 ? days : days + 1;
+      const val = days > this.totalDays - 1 ? days : days + 1;
       return val;
     });
   }
   protected addWeek(): void {
     this.daysTaken.update((days) => {
-      let val = days > this.totalDays - 5 ? days : days + 5;
+      const val = days > this.totalDays - 5 ? days : days + 5;
       return val;
     });
   }
   protected removeDay(): void {
     this.daysTaken.update((days) => {
-      let val = days === 0 ? 0 : days - 1;
+      const val = days === 0 ? 0 : days - 1;
       return val;
     });
   }

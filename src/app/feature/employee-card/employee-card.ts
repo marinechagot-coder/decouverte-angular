@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component,  input } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { StatusBadge } from '../status-badge/status-badge';
 import { EmployeeBadge } from '../employee-badge/employee-badge';

@@ -6,6 +6,7 @@ import {
   form,
   maxLength,
   minLength,
+  pattern,
   required,
 } from '@angular/forms/signals';
 import { MatButton } from '@angular/material/button';
@@ -59,6 +60,9 @@ export class AddEmployee {
       });
       required(path.job, { message: 'Le poste est obligatoire.' });
       maxLength(path.job, 40, { message: 'Le poste ne doit pas dépasser 40 caractères.' });
+      pattern(path.email, /\S+@techcorp\.fr$/, {
+        message: "L'e-mail doit se terminer par @techcorp.fr.",
+      });
     },
     {
       submission: {

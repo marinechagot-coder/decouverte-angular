@@ -23,9 +23,12 @@
     </nav>
     <div class="session">
       @if (auth.user(); as user) {
-        <span>{{ user.firstName }} {{ user.lastName }}</span>
+        <a matButton routerLink="/compte" routerLinkActive="active" ariaCurrentWhenActive="page">
+          {{ user.firstName }} {{ user.lastName }}
+        </a>
+        <button matButton="outlined" type="button" (click)="logout()">Se déconnecter</button>
       } @else {
-        <span>Non connecté</span>
+        <a matButton="filled" routerLink="/connexion">Se connecter</a>
       }
     </div>
   </mat-toolbar>

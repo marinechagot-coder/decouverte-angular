@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
 import { AuthStore } from './auth/auth-store';
@@ -12,4 +12,10 @@ import { AuthStore } from './auth/auth-store';
 export class App {
   protected readonly appName = 'TechCorp Équipe';
   protected readonly auth = inject(AuthStore);
+  private readonly router = inject(Router);
+
+  protected logout(): void {
+    this.auth.logout();
+    void this.router.navigate(['/']);
+  }
 }

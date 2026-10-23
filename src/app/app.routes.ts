@@ -7,6 +7,8 @@ import { Home } from './pages/home/home';
 import { TeamPage } from './pages/team-page/team-page';
 import { EmployeeDetails } from './pages/employee-details/employee-details';
 import { Labo } from './pages/labo/labo';
+import { Login } from './pages/login/login';
+import { Account } from './pages/account/account';
 
 export const routes: Routes = [
   // title : le titre de l'onglet, différent pour chaque page.
@@ -19,6 +21,8 @@ export const routes: Routes = [
     component: EmployeeDetails,
   },
   { path: 'labo', title: 'Laboratoire | TechCorp Équipe', component: Labo },
+  { path: 'connexion', title: 'Connexion | TechCorp Équipe', component: Login },
+  { path: 'compte', title: 'Mon compte | TechCorp Équipe', component: Account },
   // Toute autre adresse renvoie vers l'accueil. Toujours en dernier.
   { path: '**', redirectTo: '' },
 ];

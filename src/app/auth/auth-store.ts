@@ -23,8 +23,11 @@ export class AuthStore {
     );
     this.session.set(response);
   }
-
   logout(): void {
+    if (this.token()) {
+      // Le serveur oublie le jeton. On n'attend pas sa réponse, et on ignore une erreur.
+      this.http.post('/api/logout', {}).subscribe({ error: () => undefined });
+    }
     this.session.set(null);
   }
 }

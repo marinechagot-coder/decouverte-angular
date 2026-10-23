@@ -12,6 +12,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { TeamStore } from '../../service/team-store';
+import { DepartmentApi } from '../../api/departmet-api';
 
 // Le modèle du formulaire : une propriété par champ.
 interface EmployeeDraft {
@@ -43,7 +44,15 @@ export class AddEmployee {
   private readonly store = inject(TeamStore);
   private readonly router = inject(Router);
   protected readonly submitAttempted = signal(false);
-  protected readonly departments = ['Informatique', 'Ressources humaines', 'Commercial'];
+  private readonly departmentApi = inject(DepartmentApi);
+
+  // Vide au départ, remplie quand la réponse arrive.
+  protected readonly departments = signal<string[]>([]);
+
+  constructor() {
+    // subscribe : la requête part maintenant. Le callback reçoit la réponse.
+    this.departmentApi.getNames().subscribe((names) => this.departments.set(names));
+  }
 
   private readonly draft = signal<EmployeeDraft>({ ...EMPTY_DRAFT }); //copie EMPTY_DRAFT pour ne pas modifier l'original
 

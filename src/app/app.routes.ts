@@ -1,3 +1,6 @@
+import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AddEmployee } from './pages/add-employee/add-employee';
 import { Home } from './pages/home/home';
@@ -19,3 +22,6 @@ export const routes: Routes = [
   // Toute autre adresse renvoie vers l'accueil. Toujours en dernier.
   { path: '**', redirectTo: '' },
 ];
+export const appConfig: ApplicationConfig = {
+  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), provideRouter(routes)],
+};

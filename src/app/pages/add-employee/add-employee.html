@@ -73,7 +73,7 @@
   <div class="field">
     <label for="department">Service</label>
     <select id="department" [formField]="employeeForm.department">
-      @for (department of departments; track department) {
+      @for (department of departments(); track department) {
         <option [value]="department">{{ department }}</option>
       }
     </select>

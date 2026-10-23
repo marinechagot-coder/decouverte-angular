@@ -4,7 +4,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatButton } from '@angular/material/button';
 import { Subscription, filter, interval, map, of } from 'rxjs';
 import { take } from 'rxjs/operators';
-
+import { AuthStore } from '../../auth/auth-store';
 const TIPS = [
   "Lisez toujours le message d'erreur en entier.",
   'Un signal se lit avec des parenthèses.',
@@ -34,6 +34,7 @@ export class Labo {
   // Module 1 : l'ordre d'exécution.
   protected readonly logs = signal<string[]>([]);
   private readonly destroyRef = inject(DestroyRef);
+  protected readonly auth = inject(AuthStore);
   protected runTimeout(): void {
     this.logs.set([]);
     this.log('1. Avant setTimeout');

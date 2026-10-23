@@ -21,6 +21,13 @@
         >Labo</a
       >
     </nav>
+    <div class="session">
+      @if (auth.user(); as user) {
+        <span>{{ user.firstName }} {{ user.lastName }}</span>
+      } @else {
+        <span>Non connecté</span>
+      }
+    </div>
   </mat-toolbar>
 </header>
 
